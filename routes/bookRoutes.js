@@ -4,23 +4,24 @@ require("dotenv").config()
 
 module.exports = app => {
   let search
-  app.post('/books', (req, res) => {
+  app.post('/search-books', (req, res) => {
     search = req.body.search
   })
   app.get('/search-books', (req, res) => {
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}:keyes&key=${process.env.KEY}`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter:keyes&key=${process.env.KEY}`)
       .then(({ data }) => {
         data.items.forEach(data => {
           const { volumeInfo: { title, authors, description, imageLinks } } = data
-          res.write(`
-            Title: ${title}
-            Authors: ${authors}
-            Description: ${description}
-            Image: ${imageLinks.smallThumbnail}
-            `)
+          res.json(title, authors, description, imageLinks.smallThumbnail)
+          // res.write(`
+          //   Title: ${title}
+          //   Authors: ${authors}
+          //   Description: ${description}
+          //   Image: ${imageLinks.smallThumbnail}
+          //   `)
         })
+        .catch(e => console.log(e))
       })
-      .catch(e => console.log(e))
   })
   app.get('/books', (req, res) => {
     Books.find({}, (e, books) => {
