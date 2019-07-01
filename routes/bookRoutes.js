@@ -6,13 +6,16 @@ module.exports = app => {
   let search
   app.post('/search-books', (req, res) => {
     search = req.body.search
+    console.log(search)
   })
-  app.get('/search-books', (req, res) => {
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter:keyes&key=${process.env.KEY}`)
+  app.get('/search-books1', (req, res) => {
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}:keyes&key=${process.env.KEY}`)
       .then(({ data }) => {
         data.items.forEach(data => {
-          const { volumeInfo: { title, authors, description, imageLinks } } = data
-          res.json(title, authors, description, imageLinks.smallThumbnail)
+          //const { volumeInfo: { title, authors, description, imageLinks } } = data
+          //res.send(title, authors, description, imageLinks.smallThumbnail)
+          console.log(data)
+          res.send(data)
           // res.write(`
           //   Title: ${title}
           //   Authors: ${authors}
