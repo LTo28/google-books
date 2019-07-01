@@ -1,6 +1,27 @@
 const Books = require('../models/googleBooks.js')
+const axios = require("axios")
+require("dotenv").config()
 
 module.exports = app => {
+  let search
+  app.post('/books', (req, res) => {
+    search = req.body.search
+  })
+  app.get('/search-books', (req, res) => {
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}:keyes&key=${process.env.KEY}`)
+      .then(({ data }) => {
+        data.items.forEach(data => {
+          const { volumeInfo: { title, authors, description, imageLinks } } = data
+          res.write(`
+            Title: ${title}
+            Authors: ${authors}
+            Description: ${description}
+            Image: ${imageLinks.smallThumbnail}
+            `)
+        })
+      })
+      .catch(e => console.log(e))
+  })
   app.get('/books', (req, res) => {
     Books.find({}, (e, books) => {
       if (e) throw e
