@@ -14,13 +14,14 @@ module.exports = app => {
         data.items.forEach(data => {
         const { volumeInfo: { title, authors, description, imageLinks } } = data
         // res.send({title: `${title}`, authors: `${authors}`, description: `${description}`, image: `${imageLinks.smallThumbnail}`})
+        res.json({title: title, authors: authors, description: description, image: imageLinks.smallThumbnail})
 
-          res.write(`
-            Title: ${title}
-            Authors: ${authors}
-            Description: ${description}
-            Image: ${imageLinks.smallThumbnail}
-            `)
+          // res.write(`
+          //   // Title: ${title}
+          //   // Authors: ${authors}
+          //   // Description: ${description}
+          //   // Image: ${imageLinks.smallThumbnail}
+          //   // `)
         })
       })
       .catch(e => console.log(e))
