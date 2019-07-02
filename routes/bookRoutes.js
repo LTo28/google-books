@@ -9,20 +9,14 @@ module.exports = app => {
     console.log(search)
   })
   app.get('/search-books', (req, res) => {
+    let responseData = []
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=harry+potter:keyes&key=${process.env.KEY}`)
       .then(({data}) => {
         data.items.forEach(data => {
         const { volumeInfo: { title, authors, description, imageLinks } } = data
-        // res.send({title: `${title}`, authors: `${authors}`, description: `${description}`, image: `${imageLinks.smallThumbnail}`})
-        res.json({title: title, authors: authors, description: description, image: imageLinks.smallThumbnail})
-
-          // res.write(`
-          //   // Title: ${title}
-          //   // Authors: ${authors}
-          //   // Description: ${description}
-          //   // Image: ${imageLinks.smallThumbnail}
-          //   // `)
+          responseData = [...responseData, { title: title, authors: authors, description: description, image: imageLinks.smallThumbnail }]
         })
+        res.json(responseData)
       })
       .catch(e => console.log(e))
   })
