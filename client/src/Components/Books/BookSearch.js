@@ -12,13 +12,22 @@ class BookSearch extends Component {
 
    //needs an event listener
    componentDidMount() {
-     Axios.get('/search-books1')
-     .then(data => console.log(data))
+     const search = _ => {
+     Axios.get('http://localhost:3001/search-books')
+      .then(data => {
+        return(
+          <div>
+            <p>{data}</p>
+          </div>
+        )
+      })
+}
    }
+
   render() { 
     return (  
       <div>
-
+        {this.search()}
       </div>
     );
   }

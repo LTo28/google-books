@@ -8,7 +8,7 @@ const Search = () => {
       </div>
 
       <div className='booksearch'>
-        <form method='POST' action='/search-books'>
+        <form method='POST' action='http://localhost:3001/search'>
           <input type='text' placeholder='Harry Potter' name='search' />
           <button>ENTER</button>
         </form>
