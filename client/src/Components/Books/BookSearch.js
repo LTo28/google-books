@@ -1,36 +1,77 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class BookSearch extends Component {
-  state = { 
-    title: '',
-    authors: [],
-    description: '',
-    image: '',
-    favorite: false
-   }
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: '',
+      authors: [],
+      description: '',
+      image: '',
+      books: [],
+      favorite: false
+    }
+    this.search()
+  }
+  
 
-   //needs an event listener
-   componentDidMount() {
-     const search = _ => {
-     Axios.get('http://localhost:3001/search-books')
-      .then(data => {
-        return(
-          <div>
-            <p>{data}</p>
-          </div>
-        )
+  //needs an event listener
+
+  search() {
+    let responseData
+    Axios.get('/search-books')
+    .then(({data}) => {
+      data.forEach(obj => {
+        //console.log(obj.volumeInfo)
+        const { volumeInfo: { title, authors, description, imageLinks } } = obj
+        responseData = {title: title, authors: authors, description: description, image: imageLinks.smallThumbnail}
+        this.setState({
+          books: [responseData]
+        }, () => this.renderBooks())
       })
-}
-   }
+    })
+    
+  }
 
-  render() { 
-    return (  
+  renderBooks() {
+    this.state.books.map(data => {
+      console.log(data.title)
+      return(
+        <div className='hello'>
+          <div>
+
+          <p>Title: {data.title}</p>
+          </div>
+          <div>
+
+          <p>Authors: {data.authors}</p>
+          </div>
+          <div>
+
+          <p>Description: {data.description}</p>
+          </div>
+          <div>
+
+          <img src={data.image} />
+          </div>
+        </div>
+      )
+    })
+  }
+
+
+
+
+  render() {
+    
+    return (
       <div>
-        {this.search()}
+       
       </div>
     );
   }
 }
- 
+
 export default BookSearch;

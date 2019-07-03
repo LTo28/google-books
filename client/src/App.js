@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+
 import Navbar from './Components/Navbar/Navbar'
 import Header from './Components/Header/Header'
 import Search from './Components/Search/Search'
@@ -13,7 +15,10 @@ function App() {
      <Header />
      <Search />
      </div>
-     <BookSearch />
+     <div className="search">
+       {/* <BookSearch /> */}
+      {/* <Route path="/books-list" component={BookSearch} /> */}
+     </div>
     </div>
   );
 }
