@@ -1,14 +1,14 @@
-const Books = require('../models/googleBooks.js')
+const Books = require('../../models/googleBooks.js')
 const axios = require("axios")
 require("dotenv").config()
 
 module.exports = app => {
   let search
-  app.post('/search', (req, res) => {
+  app.post('/api/search', (req, res) => {
     search = req.body.search
-    res.redirect('http://localhost:3000/books-list')
+    res.redirect('/search')
   })
-  app.get('/search-books', (req, res) => {
+  app.get('/api/booksearch', (req, res) => {
     let responseData = []
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}:keyes&key=${process.env.KEY}`)
       .then(({data}) => {

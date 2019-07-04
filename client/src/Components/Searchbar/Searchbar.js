@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Search = () => {
+const Searchbar = () => {
   return (
     <div>
       <div className="instructions">
@@ -8,7 +8,7 @@ const Search = () => {
       </div>
 
       <div className='booksearch'>
-        <form method='POST' action='http://localhost:3001/search'>
+        <form method='POST' action='/api/search'>
           <input type='text' placeholder='Harry Potter' name='search' />
           <button>ENTER</button>
         </form>
@@ -17,4 +17,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default Searchbar

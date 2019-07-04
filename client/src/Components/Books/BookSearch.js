@@ -13,62 +13,41 @@ class BookSearch extends Component {
       books: [],
       favorite: false
     }
-    this.search()
+    //this.search()
   }
-  
+
 
   //needs an event listener
 
-  search() {
+  componentDidMount() {
     let responseData
-    Axios.get('/search-books')
-    .then(({data}) => {
-      data.forEach(obj => {
-        //console.log(obj.volumeInfo)
-        const { volumeInfo: { title, authors, description, imageLinks } } = obj
-        responseData = {title: title, authors: authors, description: description, image: imageLinks.smallThumbnail}
-        this.setState({
-          books: [responseData]
-        }, () => this.renderBooks())
+    Axios.get('/api/booksearch')
+      .then(({ data }) => {
+        data.forEach(obj => {
+          //console.log(obj.volumeInfo)
+          const { volumeInfo: { title, authors, description, imageLinks } } = obj
+          responseData = { title: title, authors: authors, description: description, image: imageLinks.smallThumbnail }
+          this.setState({
+            books: [...this.state.books, responseData]
+          })
+        })
       })
-    })
-    
+
   }
-
-  renderBooks() {
-    this.state.books.map(data => {
-      console.log(data.title)
-      return(
-        <div className='hello'>
-          <div>
-
-          <p>Title: {data.title}</p>
-          </div>
-          <div>
-
-          <p>Authors: {data.authors}</p>
-          </div>
-          <div>
-
-          <p>Description: {data.description}</p>
-          </div>
-          <div>
-
-          <img src={data.image} />
-          </div>
-        </div>
-      )
-    })
-  }
-
 
 
 
   render() {
-    
     return (
       <div>
-       
+        {this.state.books.map((data, id) => (
+          <div key={id}> 
+            <p>Title: {data.title}</p>
+            <p>Authors: {data.authors}</p>
+            <p>Description: {data.description}</p>
+            <img src={data.image} alt='img'/>
+          </div>
+        ))}
       </div>
     );
   }

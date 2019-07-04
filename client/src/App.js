@@ -1,25 +1,20 @@
 import React from 'react';
 import './App.css';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom'
 
-import Navbar from './Components/Navbar/Navbar'
-import Header from './Components/Header/Header'
-import Search from './Components/Search/Search'
-import BookSearch from './Components/Books/BookSearch'
+import Home from './Components/Pages/Home'
+import Search from './Components/Pages/Search'
+import Saved from './Components/Pages/Saved'
 
 function App() {
   return (
-    <div>
-     <Navbar />
-      <div className="App">
-     <Header />
-     <Search />
-     </div>
-     <div className="search">
-       {/* <BookSearch /> */}
-      {/* <Route path="/books-list" component={BookSearch} /> */}
-     </div>
-    </div>
+    <Switch>
+      <div className='App'>
+        <Route exact path='/' component={Home}></Route>
+        <Route exact path='/search' component={Search}></Route>
+        <Route exact path='/saved' component={Saved}></Route>
+      </div>
+    </Switch>
   );
 }
 

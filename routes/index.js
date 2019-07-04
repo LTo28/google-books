@@ -1,3 +1,3 @@
 module.exports = app => {
-  require('./bookRoutes.js')(app)
+  require('./api/bookRoutes.js')(app)
 }

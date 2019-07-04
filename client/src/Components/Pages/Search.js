@@ -1,0 +1,35 @@
+import React from 'react';
+import Navbar from '../Navbar/Navbar'
+import Searchbar from '../Searchbar/Searchbar'
+import Header from '../Header/Header'
+import BookSearch from '../Books/BookSearch'
+
+import { Link } from 'react-router-dom'
+
+const Search = () => {
+return(
+  <div>
+    <span>
+      <li>
+        <Link to="/"> Home </Link>
+      </li>
+      <li>
+        <Link to="/search"> Search </Link>
+      </li>
+      <li>
+        <Link to="/saved"> Saved </Link>
+      </li>
+    </span>
+    {/* <Navbar /> */}
+    <Header />
+    <div>
+    <Searchbar />
+    </div>
+    <div>
+    <BookSearch />
+    </div>
+  </div>
+)
+}
+
+export default Search
