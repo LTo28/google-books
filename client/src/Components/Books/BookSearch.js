@@ -6,10 +6,6 @@ class BookSearch extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '',
-      authors: [],
-      description: '',
-      image: '',
       books: [],
       favorite: false
     }
@@ -25,30 +21,49 @@ class BookSearch extends Component {
       .then(({ data }) => {
         data.forEach(obj => {
           //console.log(obj.volumeInfo)
-          const { volumeInfo: { title, authors, description, imageLinks } } = obj
-          responseData = { title: title, authors: authors, description: description, image: imageLinks.smallThumbnail }
+          const { volumeInfo: { title, authors, description, imageLinks, infoLink } } = obj
+          responseData = { title: title, authors: authors, description: description, image: imageLinks.smallThumbnail, link: infoLink }
           this.setState({
             books: [...this.state.books, responseData]
           })
+          console.log(this.state.books)
         })
       })
+  }
 
+  handleOnClick(e) {
+    e.preventDefault();
+    console.log('hello')
+  }
+
+  renderBooks() {
+    
+    return (
+      <div>
+        {this.state.books.map((data, id) => (
+          <div key={id}>
+            <p>Title: {data.title}</p>
+            <p>Authors: {data.authors}</p>
+            <p>Description: {data.description}</p>
+            <a href={data.link}>Click Here For More Info</a>
+            <img src={data.image} alt='img' />
+            <button onClick={() => console.log(id)}>Add to favorites</button>
+          </div>
+        ))}
+      </div>
+    );
   }
 
 
 
+
+
   render() {
+    //console.log(this.state.books)
     return (
-      <div>
-        {this.state.books.map((data, id) => (
-          <div key={id}> 
-            <p>Title: {data.title}</p>
-            <p>Authors: {data.authors}</p>
-            <p>Description: {data.description}</p>
-            <img src={data.image} alt='img'/>
-          </div>
-        ))}
-      </div>
+     <div>
+       {this.renderBooks()}
+     </div>
     );
   }
 }
