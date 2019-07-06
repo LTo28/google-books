@@ -1,6 +1,8 @@
-const Books = require('../../models/googleBooks.js')
+const Books = require('../../models/index')
 const axios = require("axios")
 require("dotenv").config()
+
+const bookController = require('../../controller/bookController');
 
 module.exports = app => {
   let search
@@ -11,37 +13,14 @@ module.exports = app => {
   app.get('/api/booksearch', (req, res) => {
     let responseData = []
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${process.env.KEY}`)
-      .then(({data}) => {
+      .then(({ data }) => {
         res.json(data.items)
       })
       .catch(e => console.log(e))
   })
-  app.get('/api/books', (req, res) => {
-    // Books.find({}, (e, books) => {
-    //   if (e) throw e
-    //   res.json(books)
-    // })
-    res.json(Books)
-  })
-  app.get('/api/books/:id', (req, res) => {
-    Books.findById(req.params.id, (e, books) => {
-      if (e) throw e
-      res.json(books)
-    })
-  })
-  app.post('/api/books', (req, res) => {
-    
-  })
-  app.put('/api/books/:id', (req, res) => {
-    Books.findByIdAndUpdate(req.params.id, req.body, e => {
-      if (e) throw e
-      res.sendStatus(200)
-    })
-  })
-  app.delete('/api/books/:id', (req, res) => {
-    Books.findByIdAndDelete(req.params.id, e => {
-      if (e) throw e
-      res.sendStatus(200)
-    })
-  })
+  app.get('/api/books', bookController.findAll)
+  app.get('/api/books/:id', bookController.findById)
+  app.post('/api/books', bookController.create)
+  app.put('/api/books/:id', bookController.findByIdAndUpdate)
+  app.delete('/api/books/:id', bookController.findByIdAndDelete)
 }

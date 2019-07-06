@@ -1,7 +1,7 @@
-const { Schema, Model } = require('mongoose')
+const { Schema, model } = require('mongoose')
 
 const db = {
-  Books: require('./googleBooks.js')(Schema, Model)
+  Books: require('./bookModels.js')(Schema, model)
 }
 
 module.exports = db

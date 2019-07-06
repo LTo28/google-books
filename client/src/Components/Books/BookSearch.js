@@ -33,7 +33,6 @@ class BookSearch extends Component {
 
   handleOnClick(e) {
     e.preventDefault();
-    console.log('hello')
   }
 
   renderBooks() {
@@ -47,7 +46,7 @@ class BookSearch extends Component {
             <p>Description: {data.description}</p>
             <a href={data.link}>Click Here For More Info</a>
             <img src={data.image} alt='img' />
-            <button onClick={() => console.log(id)}>Add to favorites</button>
+            <button onClick={() => Axios.post('/api/books', data)}>Add to favorites</button>
           </div>
         ))}
       </div>
