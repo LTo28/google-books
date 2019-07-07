@@ -10,8 +10,7 @@ module.exports = app => {
     search = req.body.search
     res.redirect('/search')
   })
-  app.get('/api/booksearch', (req, res) => {
-    let responseData = []
+  app.get('/api/search', (req, res) => {
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${process.env.KEY}`)
       .then(({ data }) => {
         res.json(data.items)

@@ -6,18 +6,13 @@ class BookSearch extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      books: [],
-      favorite: false
+      books: []
     }
-    //this.search()
   }
-
-
-  //needs an event listener
 
   componentDidMount() {
     let responseData
-    Axios.get('/api/booksearch')
+    Axios.get('/api/search')
       .then(({ data }) => {
         data.forEach(obj => {
           //console.log(obj.volumeInfo)
@@ -29,14 +24,21 @@ class BookSearch extends Component {
           console.log(this.state.books)
         })
       })
+      .catch(e => console.log(e))
+
   }
 
-  handleOnClick(e) {
-    e.preventDefault();
+
+
+
+  saveBooks(data) {
+    Axios.post('/api/books', data)
+      .then(res => alert('Book Saved'))
+      .catch(e => console.log(e))
   }
+
 
   renderBooks() {
-    
     return (
       <div>
         {this.state.books.map((data, id) => (
@@ -46,7 +48,7 @@ class BookSearch extends Component {
             <p>Description: {data.description}</p>
             <a href={data.link}>Click Here For More Info</a>
             <img src={data.image} alt='img' />
-            <button onClick={() => Axios.post('/api/books', data)}>Add to favorites</button>
+            <button onClick={() => this.saveBooks(data)}>Add to favorites</button>
           </div>
         ))}
       </div>
@@ -54,15 +56,11 @@ class BookSearch extends Component {
   }
 
 
-
-
-
   render() {
-    //console.log(this.state.books)
     return (
-     <div>
-       {this.renderBooks()}
-     </div>
+      <div>
+        {this.renderBooks()}
+      </div>
     );
   }
 }

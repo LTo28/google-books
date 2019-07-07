@@ -7,14 +7,13 @@ import BookSearch from '../Books/BookSearch'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
+
+
   return (
     <div>
         <span>
           <li>
             <Link to="/"> Home </Link>
-          </li>
-          <li>
-            <Link to="/search"> Search </Link>
           </li>
           <li>
             <Link to="/saved"> Saved </Link>
@@ -23,7 +22,7 @@ const Home = () => {
       {/* <Navbar /> */}
       <Header />
       <div>
-        <Searchbar />
+      <Searchbar />
       </div>
     </div>
   )
