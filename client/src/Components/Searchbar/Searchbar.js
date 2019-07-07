@@ -1,17 +1,26 @@
 import React from 'react'
-import BookSearch from '../Books/BookSearch'
+import Input from '@material-ui/core/Input'
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import './style.css'
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+  input: {
+    display: 'none',
+  },
+}));
 
 const Searchbar = () => {
+  const classes = useStyles();
   return (
-    <div>
-      <div className="instructions">
-        <p>Search for a book</p>
-      </div>
-
+    <div className='searchbar'>
       <div className='booksearch'>
         <form method='POST' action='/api/search'>
-          <input type='text' placeholder='Harry Potter' name='search' />
-          <button>ENTER</button>
+          <Input type='text' placeholder='Search' name='search' />
+          <Button className='Button' variant='contained' color='primary' className={classes.button}>ENTER</Button>
         </form>
       </div>
     </div>

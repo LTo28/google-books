@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-
-import Navbar from '../Navbar/Navbar'
-import Header from '../Header/Header'
-
-import { Link } from 'react-router-dom'
 import Axios from 'axios';
+import Navbar from '../Navbar/Navbar'
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import './style.css'
 
 
 class Saved extends Component {
@@ -42,25 +46,39 @@ class Saved extends Component {
   render() {
     return (
       <div>
-        <span>
-          <li>
-            <Link to="/"> Home </Link>
-          </li>
-          <li>
-            <Link to="/saved"> Saved </Link>
-          </li>
-        </span>
-        {/* <Navbar /> */}
-        <Header />
+        <Navbar />
         <div>
           {this.state.books.map((data, id) => (
-            <div key={id}>
-              <p>Title: {data.title}</p>
-              <p>Authors: {data.authors}</p>
-              <p>Description: {data.description}</p>
-              <a href={data.link}>Click Here For More Info</a>
-              <img src={data.image} alt='img' />
-              <button onClick={() => this.handleDeleteSaved(data._id)}>Delete</button>
+            <div className='saved' key={id} >
+              <Paper>
+                <Grid container spacing={2}>
+                  <Grid item>
+                    <ButtonBase>
+                      <img alt="complex" src={data.image} />
+                    </ButtonBase>
+                  </Grid>
+                  <Grid item xs={12} sm container>
+                    <Grid item xs container direction="column" spacing={2}>
+                      <Grid item xs>
+                        <Typography gutterBottom variant="subtitle1">
+                          {data.title}
+                        </Typography>
+                        <Typography variant="body2" gutterBottom>
+                          Description: {data.description}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary">
+                          <Link href={data.link}>More Info</Link>
+                        </Typography>
+                      </Grid>
+                      <Grid item>
+                        <Typography variant="body2" style={{ cursor: 'pointer' }}>
+                          <Button variant='contained' color='primary' onClick={() => this.handleDeleteSaved(data._id)}>Delete</Button>
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Paper>
             </div>
           ))}
         </div>
