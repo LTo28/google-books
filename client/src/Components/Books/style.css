@@ -1,6 +1,11 @@
 .search {
   margin-top: 25px
 }
+
 .books {
   margin: 1em
+}
+
+.image.MuiButtonBase-root {
+  margin: 10px
 }

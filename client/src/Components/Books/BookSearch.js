@@ -69,7 +69,7 @@ class BookSearch extends Component {
             <Paper>
               <Grid container spacing={2}>
                 <Grid item>
-                  <ButtonBase>
+                  <ButtonBase className='image'>
                     <img alt="complex" src={data.image} />
                   </ButtonBase>
                 </Grid>
