@@ -44,21 +44,20 @@ class BookSearch extends Component {
     Axios.get('/api/search')
       .then(({ data }) => {
         data.forEach(obj => {
-          //console.log(obj.volumeInfo)
           const { volumeInfo: { title, authors, description, imageLinks, infoLink } } = obj
           responseData = { title: title, authors: authors, description: description, image: imageLinks.smallThumbnail, link: infoLink }
           this.setState({
             books: [...this.state.books, responseData]
           })
-          console.log(this.state.books)
         })
       })
       .catch(e => console.log(e))
   }
 
+
   saveBooks(data) {
     Axios.post('/api/books', data)
-      .then(res => alert('Book saved'))
+      .then(res => alert('Book Saved'))
       .catch(e => console.log(e))
   }
 
@@ -96,6 +95,7 @@ class BookSearch extends Component {
                 </Grid>
               </Grid>
             </Paper>
+            {this.handleFavorites}
           </div>
         ))}
       </div>
@@ -106,9 +106,9 @@ class BookSearch extends Component {
   render() {
     return (
       <Container maxWidth='lg'>
-      <div>
-        {this.renderBooks()}
-      </div>
+        <div>
+          {this.renderBooks()}
+        </div>
       </Container>
     );
   }

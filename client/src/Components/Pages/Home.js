@@ -8,7 +8,7 @@ const Home = () => {
     <div>
       <Navbar />
       <div>
-      <Searchbar />
+        <Searchbar />
       </div>
     </div>
   )
