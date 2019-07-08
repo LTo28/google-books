@@ -10,9 +10,9 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <Route exact path='/' component={Home}></Route>
-        <Route className='pages' exact path='/search' component={Search}></Route>
-        <Route className='pages' exact path='/saved' component={Saved}></Route>
+        <Route exact path='/' component={() => <Home/>}></Route>
+        <Route className='pages' exact path='/search' component={() => <Search />}></Route>
+        <Route className='pages' exact path='/saved' component={() => <Saved />}></Route>
       </div>
     </Router>
   );
