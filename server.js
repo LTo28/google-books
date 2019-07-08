@@ -12,6 +12,6 @@ if (process.env.NODE_ENV === "production") {
 
 require('./routes')(app)
 
-require('mongoose').connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks_db', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true })
+require('mongoose').connect(process.env.MONGODB_URI, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true })
   .then(() => app.listen(process.env.PORT || 3001, () => { console.log(`Server running on port: ${PORT}`) }))
   .catch(e => console.log(e))
