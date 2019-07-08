@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar'
-import Searchbar from '../Searchbar/Searchbar'
+import Navbar from '../../Navbar/Navbar'
+import Searchbar from '../../Searchbar/Searchbar'
 
 
 const Home = () => {

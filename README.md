@@ -1,5 +1,4 @@
 ## Google Books
-<br>
 A full-stack MERN app to search and save your favorite books.
 <br>
 <br>
