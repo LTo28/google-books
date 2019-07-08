@@ -2,7 +2,9 @@
 <br>
 A Full-Stack MERN app to search and save your favorite books.
 <br>
+<br>
 Deployment:
+<br>
 <br>
 Technologies used: 
 <ul>
@@ -13,7 +15,6 @@ Technologies used:
 <li>Google Books API
 <li>Material-UI
 </ul>
-<br>
 Future enhancements:
 <br>
-Disable favorite button after you save it and a login page.
+- Disable favorite button after you save it and a login page.
