@@ -18,5 +18,5 @@ Technologies used:
 Future enhancements:
 <ul>
 <li>Disable favorite button after you save it
-<li>login page
+<li>Login page
 <ul>
