@@ -1,7 +1,5 @@
 const { Schema, model } = require('mongoose')
 
-const db = {
+module.exports = {
   Books: require('./bookModels.js')(Schema, model)
 }
-
-module.exports = db

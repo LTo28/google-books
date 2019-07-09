@@ -1,8 +1,8 @@
-const Books = require('../../models/index')
+const Books = require('../models/index')
 const axios = require("axios")
 require("dotenv").config()
 
-const bookController = require('../../controller/bookController');
+const bookController = require('../controller/bookController');
 
 module.exports = app => {
   let search
