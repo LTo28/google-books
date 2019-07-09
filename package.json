@@ -7,17 +7,16 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "install": "cd client && npm install",
+    "client-install": "npm install --prefix client",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LTo28/google-books.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Larry To",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LTo28/google-books/issues"
@@ -28,9 +27,5 @@
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.6.2"
-  },
-  "engines": {
-    "node": "11.14.0",
-    "npm": "6.9.0"
   }
 }

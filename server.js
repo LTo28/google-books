@@ -1,17 +1,17 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
 const path = require('path')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-require('./routes')(app)
+app.use(require('./routes'))
 
-// Serve up static assets (usually on heroku)
+// Serve up static assets
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
