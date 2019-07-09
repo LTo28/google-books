@@ -7,6 +7,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(require('./routes'))
 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks_db', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true })
+  .then(() => console.log('MongoDB Connected'))
+  .catch(e => console.log(e))
+
 // Serve up static assets
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
@@ -15,6 +19,4 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks_db', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true })
-  .then(() => app.listen(process.env.PORT || 3001, () => { console.log(`Server running on port: ${PORT}`) }))
-  .catch(e => console.log(e))
+app.listen(process.env.PORT || 3001, () => console.log(`Server running on port: ${PORT}`))
