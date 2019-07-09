@@ -6,16 +6,13 @@ Deployment:
 <br>
 <br>
 Technologies used: 
-<ul>
 <li>React
 <li>Node
 <li>Express
 <li>MongoDB / Mongoose
 <li>Google Books API
 <li>Material-UI
-</ul>
+<br>
 Future enhancements:
-<ul>
 <li>Disable favorite button after you save it
 <li>Login page
-<ul>
