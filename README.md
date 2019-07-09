@@ -12,7 +12,6 @@ Technologies used:
 <li>MongoDB / Mongoose
 <li>Google Books API
 <li>Material-UI
-<br>
 Future enhancements:
 <li>Disable favorite button after you save it
 <li>Login page
