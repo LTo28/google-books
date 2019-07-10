@@ -22,6 +22,6 @@ Future enhancements:
 <br>
 Screenshots:
 <br>
-![alt text](./assets/homepage.png "Home Page")
-![alt text](./assets/search-page.png "Search Page")
-![alt text](./assets/saved-page.png "Saved Page")
+![alt tag](https://raw.githubusercontent.com/LTo28/google-books/master/assets/homepage.png "Home Page")
+![alt tag](https://raw.githubusercontent.com/LTo28/google-books/master/assets/search-page.png "Search Page")
+![alt tag](https://raw.githubusercontent.com/LTo28/google-books/master/assets/saved-page.png "Saved Page")
