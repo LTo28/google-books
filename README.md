@@ -25,15 +25,12 @@ Screenshots:
 <br/>
 Home Page:
 <br/>
-![home]
-(https://raw.githubusercontent.com/LTo28/google-books/master/assets/homepage.png)
+![alt text](https://raw.githubusercontent.com/LTo28/google-books/master/assets/homepage.png)
 <br/>
 Search Page:
 <br/>
-![search]
-(https://raw.githubusercontent.com/LTo28/google-books/master/assets/search-page.png)
+![alt text](https://raw.githubusercontent.com/LTo28/google-books/master/assets/search-page.png)
 <br/>
 Favorites Page:
 <br/>
-![saved]
-(https://raw.githubusercontent.com/LTo28/google-books/master/assets/saved-page.png)
+![alt text](https://raw.githubusercontent.com/LTo28/google-books/master/assets/saved-page.png)
