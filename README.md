@@ -23,10 +23,15 @@ Future enhancements:
 <br>
 Screenshots:
 <br>
-Home:
+Home Page:
 <br>
-![home](https://raw.githubusercontent.com/LTo28/google-books/master/assets/homepage.png)
+![home]
+(https://raw.githubusercontent.com/LTo28/google-books/master/assets/homepage.png)
 <br>
-![search](https://raw.githubusercontent.com/LTo28/google-books/master/assets/search-page.png)
+Search Page:
+![search]
+(https://raw.githubusercontent.com/LTo28/google-books/master/assets/search-page.png)
 <br>
-![saved](https://raw.githubusercontent.com/LTo28/google-books/master/assets/saved-page.png)
+Favorites Page:
+![saved]
+(https://raw.githubusercontent.com/LTo28/google-books/master/assets/saved-page.png)
