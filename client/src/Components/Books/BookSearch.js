@@ -42,7 +42,8 @@ class BookSearch extends Component {
   componentDidMount() {
     let responseData
     Axios.get('/api/search')
-      .then(({ data }) => {
+      .then(res => res.data)
+      .then(( data ) => {
         data.forEach(obj => {
           const { volumeInfo: { title, authors, description, imageLinks, infoLink } } = obj
           responseData = { title: title, authors: authors, description: description, image: imageLinks.smallThumbnail, link: infoLink }
@@ -53,6 +54,7 @@ class BookSearch extends Component {
       })
       .catch(e => console.log(e))
   }
+
 
 
   saveBooks(data) {

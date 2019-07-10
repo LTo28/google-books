@@ -1,4 +1,5 @@
 import React from 'react'
+import Axios from 'axios'
 import Input from '@material-ui/core/Input'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,6 +13,24 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
   },
 }));
+
+let books
+
+const bookSearch = () => {
+  let responseData
+    Axios.get('/api/search')
+      .then(res => res.data)
+      .then(( data ) => {
+        //console.log(data)
+        data.forEach(obj => {
+          const { volumeInfo: { title, authors, description, imageLinks, infoLink } } = obj
+          responseData = { title: title, authors: authors, description: description, image: imageLinks.smallThumbnail, link: infoLink }
+          books = [...this.state.books, responseData]
+          console.log(books)
+        })
+      })
+      .catch(e => console.log(e))
+}
 
 const Searchbar = () => {
   const classes = useStyles();
