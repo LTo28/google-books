@@ -1,10 +1,5 @@
-## Google Books
+# Google Books
 A full-stack MERN app to search and save your favorite books.
-<br/>
-<br/>
-Deployment: https://mern-googlebooks.herokuapp.com
-<br/>
-Current bug in deployment: Search results not loading.
 <br/>
 <br/>
 Technologies used:
@@ -24,13 +19,13 @@ Future enhancements:
 Screenshots:
 <br/>
 Home Page:
-<br/>
-![home] (https://raw.githubusercontent.com/LTo28/google-books/master/assets/homepage.png)
-<br/>
+  
+![Image of Home](https://raw.githubusercontent.com/LTo28/google-books/master/assets/homepage.png)
+
 Search Page:
-<br/>
-![search] (https://raw.githubusercontent.com/LTo28/google-books/master/assets/search-page.png)
-<br/>
+
+![Image of Search](https://raw.githubusercontent.com/LTo28/google-books/master/assets/search-page.png)
+
 Favorites Page:
-<br/>
-![saved] (https://raw.githubusercontent.com/LTo28/google-books/master/assets/saved-page.png)
+
+![Image of Favorites](https://raw.githubusercontent.com/LTo28/google-books/master/assets/saved-page.png)
