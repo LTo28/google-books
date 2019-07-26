@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
@@ -15,6 +16,15 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks_db', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true })
-  .then(() => app.listen(process.env.PORT || 3001))
-  .catch(e => console.log(e))
+const port = process.env.PORT || 3001
+
+app.listen(port, () => console.log(`Server started on port ${port}`));
+
+// Connect to Mongo
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: true
+}) // Adding new mongo url parser
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err));
