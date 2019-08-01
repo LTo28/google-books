@@ -19,6 +19,7 @@ Future enhancements:
 <li>Disable favorite button after you save it
 <li>Login page
 <li>Loading/Searching page
+<li>Page reloads after you remove the book
 <br/>
 <br/>
 Screenshots:
